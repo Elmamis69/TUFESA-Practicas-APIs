@@ -13,7 +13,9 @@ const empleadoSchema = new mongoose.Schema({
     },
     correo: {
         type: String,
-        required: true
+        required: true,
+        // Validación para garantizar que el campo "correo" contenga una dirección de correo electrónico válida.
+        match: [/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/, 'Por favor, introduce un correo electrónico válido']
     },
     RFC: {
         type: String,
