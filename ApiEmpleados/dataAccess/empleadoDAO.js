@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const Empleado = require("../models/empleado");
 
 class EmpleadoDAO {
@@ -22,6 +21,14 @@ class EmpleadoDAO {
         }
     }    
 
+    async obtenerPorNumEmpleado(numero){
+        try{
+            return await Empleado.find({numero:numero});
+        }catch(Error){
+            throw Error(error)
+        }
+    }
+
     async obtenerEmpleadoPorNumEmpleadoYCorreo(numero, correo){
         try{
             return await Empleado.find({numero:numero}, {correo:correo});
@@ -30,7 +37,7 @@ class EmpleadoDAO {
         }
     }
 
-    async actualizarProducto(numero, correo, empleadoData){
+    async actualizarEmpleado(numero, correo, empleadoData){
         const empleado = await this.obtenerEmpleadoPorNumEmpleadoYCorreo(numero, correo);
         if(!empleado){
             console.log("Empleado no existe")
