@@ -11,6 +11,10 @@ const empleadoSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    nombre: {
+        type: String,
+        required: true
+    },
     correo: {
         type: String,
         required: true,
@@ -18,6 +22,10 @@ const empleadoSchema = new mongoose.Schema({
         match: [/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/, 'Por favor, introduce un correo electrónico válido']
     },
     RFC: {
+        type: String,
+        required: true
+    },
+    CURP: {
         type: String,
         required: true
     }
