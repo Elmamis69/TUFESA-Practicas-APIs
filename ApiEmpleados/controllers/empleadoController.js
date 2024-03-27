@@ -39,6 +39,23 @@ class EmpleadoController {
       next(new AppError("Error al obtener empleados", 500));
     }
   }
+
+  // Método para obtener un empleado por número
+  static async obtenerEmpleadoPorNumero(req, res, next) {
+    try {
+      // Obtener el número de empleado de los parámetros de la URL
+      const { numero } = req.params;
+
+      // Llamar al método de EmpleadoDAO para obtener un empleado por número
+      const empleado = await EmpleadoDAO.obtenerPorNumEmpleado(numero);
+
+      // Enviar la respuesta con el empleado obtenido
+      res.status(200).json(empleado);
+    } catch (error) {
+      console.error(error);
+      next(new AppError("Error al obtener empleado", 500));
+    }
+  }
 }
 
 module.exports = EmpleadoController;
