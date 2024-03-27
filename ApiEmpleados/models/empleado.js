@@ -27,7 +27,14 @@ const empleadoSchema = new mongoose.Schema({
     },
     CURP: {
         type: String,
-        required: true
+        required: true,
+        validate: {
+            validator: function(curp) {
+                // Validar que la CURP tenga una longitud específica, por ejemplo, 18 caracteres
+                return curp.length === 18;
+            },
+            message: 'La CURP debe tener 18 caracteres'
+        }
     }
 });
 
